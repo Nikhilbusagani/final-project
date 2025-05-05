@@ -1,0 +1,117 @@
+{% extends 'users/userbase.html' %}
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    .form-container {
+        width: 50%;
+        margin: auto;
+        background: #f9f9f9;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1, h3 {
+        text-align: center;
+        color: #333;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin: 10px 0 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #218838;
+    }
+
+    .highlight-text {
+        color: red;
+        font-weight: bold;
+    }
+
+    .intro-text {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>
+
+<h1>Prediction Form</h1>
+
+<section id="intro">
+    <div class="intro-text">
+        <h3 class="highlight-text">{{ msg }} € </h3>
+        <h3>The Feature {{ features }} </h3>
+    </div>
+
+    <div class="form-container">
+        <form action="{% url 'user_Prediction' %}" method="post">
+            {% csrf_token %}
+            
+            <label for="AccelSec">Acceleration (0-100 km/h in sec):</label>
+            <input type="number" name="AccelSec" required>
+            
+            <label for="TopSpeed_KmH">Top Speed (km/h):</label>
+            <input type="number" name="TopSpeed_KmH" required>
+            
+            <label for="Range_Km">Range (km):</label>
+            <input type="number" name="Range_Km" required>
+            
+            <label for="Battery_Pack">Battery Pack (kWh):</label>
+            <input type="number" name="Battery_Pack" required>
+            
+            <label for="Efficiency_WhKm">Efficiency (Wh/km):</label>
+            <input type="number" name="Efficiency_WhKm" required>
+            
+            <label for="FastCharge_KmH">Fast Charge (km/h):</label>
+            <input type="number" name="FastCharge_KmH" required>
+            
+            <label for="RapidCharge">Rapid Charge (0 or 1):</label>
+            <input type="number" name="RapidCharge" min="0" max="1" required>
+            
+            <label for="PowerTrain">PowerTrain:</label>
+            <input type="number" name="PowerTrain" required>
+            
+            <label for="PlugType">Plug Type:</label>
+            <input type="number" name="PlugType" required>
+            
+            <label for="BodyStyle">Body Style:</label>
+            <input type="number" name="BodyStyle" required>
+            
+            <label for="Segment">Segment:</label>
+            <input type="number" name="Segment" required>
+            
+            <label for="Seats">Seats:</label>
+            <input type="number" name="Seats" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'admins/adminbase.html' %}
+
+{% block title %}
+Admin Home
+{% endblock %}
+
+
+{% block content %}
+
+{% load static %}
+<section id="hero" class="hero d-flex align-items-center">
+
+    <div class="container">
+        <div class="row offset-md-3 col-md-10 ">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+
+                <div data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-center text-lg-start">
+
+                        <h3>Admin View Results</h3>
+                        <table class ="center"></table>
+                        <table class="table" border="2" >
+                            <tr>
+                                <th>S.NO</th>
+                                <th>Algorithm</th>
+                                <th>Accuracy</th>
+                                <th>Precession</th>
+                                <th>Recall</th>
+                                <th>F1-Score</th>
+                            </tr>
+
+                            <tr>
+                                <td>1</td>
+                                <td>Support Vector Machine</td>
+                                <td>{{svm.svm_accuracy}}</td>
+                                <td>{{svm.svm_precision}}</td>
+                                <td>{{svm.svm_recall}}</td>
+                                <td>{{svm.svm_f1score}}</td>
+                            </tr>
+                             <tr>
+                                <td>2</td>
+                                <td>Random Forest</td>
+                                <td>{{rf.rf_accuracy}}</td>
+                                <td>{{rf.rf_precision}}</td>
+                                <td>{{rf.rf_recall}}</td>
+                                <td>{{rf.rf_f1score}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>Decision Tree</td>
+                                <td>{{dt.dt_accuracy}}</td>
+                                <td>{{dt.dt_precision}}</td>
+                                <td>{{dt.dt_recall}}</td>
+                                <td>{{dt.dt_f1score}}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section><!-- End Hero -->
+
+
+{% endblock %}
